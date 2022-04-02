@@ -1,20 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
-<widget id=".asynclistview.AsyncListView" pluginWidget="true" needsEntityContext="true" offlineCapable="true"
-        supportedPlatform="Web"
-        xmlns="http://www.mendix.com/widget/1.0/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-        xsi:schemaLocation="http://www.mendix.com/widget/1.0/ ../node_modules/mendix/custom_widget.xsd">
+<widget id=".asynclistview.AsyncListView" pluginWidget="true" needsEntityContext="true" offlineCapable="true" supportedPlatform="Web" xmlns="http://www.mendix.com/widget/1.0/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mendix.com/widget/1.0/ ../node_modules/mendix/custom_widget.xsd">
     <name>Async List View</name>
     <description>Get a list of objects without preventing the page from loading</description>
-    <icon/>
+    <icon />
     <properties>
         <propertyGroup caption="General">
             <property key="data" type="datasource" isList="true" required="true">
                 <caption>Data source</caption>
                 <description />
             </property>
+            <property key="useMxListViewStyling" type="boolean" defaultValue="true">
+                <caption>Use Mendix Listview Style?</caption>
+                <description>Use the classes from the standard Mendix List View?</description>
+            </property>
             <property key="content" type="widgets" required="true" dataSource="data">
                 <caption>Content</caption>
                 <description>Content of the cell</description>
+            </property>
+            <property key="emptyText" type="expression" defaultValue="'No Data Found'">
+                <caption>No Data Text</caption>
+                <description>The text displayed if the datasource returns nothing.</description>
+                <returnType type="String" />
+            </property>
+        </propertyGroup>
+        <propertyGroup caption="Refresh Handling">
+            <property key="refreshBool" type="attribute" required="true">
+                <caption>Refresh Boolean</caption>
+                <description>Select a boolean on your context object that defaults to FALSE.</description>
+                <attributeTypes>
+                    <attributeType name="Boolean" />
+                </attributeTypes>
+            </property>
+            <property key="refreshAction" type="action">
+                <caption>Refresh Action</caption>
+                <description>Action to refresh the datasource</description>
+            </property>
+        </propertyGroup>
+        <propertyGroup caption="Spinner">
+            <property key="useSpinner" type="boolean" defaultValue="true">
+                <caption>Show Spinner?</caption>
+                <description>Shows a spinner while the datasource is loading.</description>
+            </property>
+            <property key="spinnerColor" type="expression" defaultValue="'lightgrey'">
+                <caption>Color</caption>
+                <description></description>
+                <returnType type="String" />
+            </property>
+            <property key="spinnerSize" type="expression" defaultValue="'5em'">
+                <caption>Size</caption>
+                <description></description>
+                <returnType type="String" />
             </property>
         </propertyGroup>
     </properties>
