@@ -8,10 +8,10 @@ import { AsyncListViewContainerProps } from "../typings/AsyncListViewProps";
 import "./ui/AsyncListView.css";
 
 const AsyncListView = (props: AsyncListViewContainerProps): JSX.Element => {
-    console.log("main props", props);
+    // console.log("main props", props);
     const refreshDatasource = () => {
         if (props.refreshBool.status === ValueStatus.Available && props.refreshBool.value === false) {
-            console.log("updating refresh bool");
+            // console.log("updating refresh bool");
             props.refreshBool.setValue(true);
             props.refreshAction?.execute();
         }
@@ -24,7 +24,7 @@ const AsyncListView = (props: AsyncListViewContainerProps): JSX.Element => {
         props.refreshBool.status === ValueStatus.Available &&
         props.refreshBool.value === true
     ) {
-        console.log("rendering list", props);
+        // console.log("rendering list", props)
         if (props.data.items.length > 0) {
             if (props.useMxListViewStyling) {
                 //render with ul and li to match the mendix styling
