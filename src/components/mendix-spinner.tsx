@@ -7,7 +7,7 @@ export type spinnerProps = {
 };
 
 const MendixSpinner = (props: spinnerProps): JSX.Element => {
-    console.log("spinner props", props);
+    // console.log("spinner props", props);
     const Spinner = styled.div`
         width: ${props.size};
         height: ${props.size};
