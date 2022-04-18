@@ -22,6 +22,10 @@
                 <description>The text displayed if the datasource returns nothing.</description>
                 <returnType type="String" />
             </property>
+            <property key="fixedHeight" type="string" defaultValue="" required="false">
+                <caption>Fixed Height</caption>
+                <description></description>
+            </property>
         </propertyGroup>
         <propertyGroup caption="Refresh Handling">
             <property key="refreshBool" type="attribute" required="true">

@@ -1,5 +1,5 @@
 import { createElement } from "react";
-import styled from "@emotion/styled";
+import { keyframes, style } from "typestyle";
 
 export type spinnerProps = {
     color: string;
@@ -8,31 +8,37 @@ export type spinnerProps = {
 
 const MendixSpinner = (props: spinnerProps): JSX.Element => {
     // console.log("spinner props", props);
-    const Spinner = styled.div`
-        width: ${props.size};
-        height: ${props.size};
-        margin: auto;
-        &:after {
-            content: " ";
-            display: block;
-            width: ${props.size};
-            height: ${props.size};
-            margin: 8px;
-            border-radius: 50%;
-            border: 6px solid ${props.color};
-            border-color: ${props.color} transparent ${props.color} transparent;
-            animation: lds-dual-ring 1.2s linear infinite;
-        }
-        @keyframes lds-dual-ring {
-            0% {
-                transform: rotate(0deg);
+
+    const spinner = style({
+        width: `${props.size}`,
+        height:`${props.size}`,
+        margin: "0 auto"
+    });
+
+    const subSpinner = style({
+        content: " ",
+        display: "block",
+        width: `${props.size}`,
+        height: `${props.size}`,
+        // margin: "8px",
+        borderRadius: "50%",
+        border: `6px solid ${props.color}`,
+        borderColor: `${props.color} transparent ${props.color} transparent`,
+        animationName: keyframes({
+            "0%": {
+                transform: "rotate(0deg)",
+            },
+            "100%": {
+                transform: "rotate(360deg)",
             }
-            100% {
-                transform: rotate(360deg);
-            }
-        }
-    `;
-    return <Spinner />;
+        }),
+        animationDuration: '1.2s',
+        animationIterationCount: 'infinite'
+    })
+
+    return <div className={spinner}>
+        <div className={subSpinner}/>
+    </div>;
 };
 
 export default MendixSpinner;

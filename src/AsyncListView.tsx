@@ -1,7 +1,6 @@
 import React, { createElement } from "react";
 import { ValueStatus } from "mendix";
 import MendixSpinner from "./components/mendix-spinner";
-// import ListViewHandler from "./components/listviewhandler";
 
 import { AsyncListViewContainerProps } from "../typings/AsyncListViewProps";
 
@@ -30,11 +29,11 @@ const AsyncListView = (props: AsyncListViewContainerProps): JSX.Element => {
                 //render with ul and li to match the mendix styling
                 return (
                     <div
-                        className={
+                        className={ 
                             props.class
                                 ? "widget-asynclistview mx-listview " + props.class
                                 : "widget-asynclistview mx-listview"
-                        }
+                        }style={{height: `${props.fixedHeight}`}}
                     >
                         <ul>
                             {props.data.items.map(mxObj => {
@@ -46,7 +45,7 @@ const AsyncListView = (props: AsyncListViewContainerProps): JSX.Element => {
             } else {
                 //render with basic divs for custom styling
                 return (
-                    <div className={props.class ? "widget-asynclistview " + props.class : "widget-asynclistview "}>
+                    <div className={props.class ? "widget-asynclistview " + props.class : "widget-asynclistview "} style={{height: `${props.fixedHeight}`}}>
                         {props.data.items.map(mxObj => {
                             return <div className="widget-asynclistview-item">{props.content(mxObj)}</div>;
                         })}
@@ -58,7 +57,7 @@ const AsyncListView = (props: AsyncListViewContainerProps): JSX.Element => {
                 <div
                     className={
                         props.class ? "widget-asynclistview-nodata " + props.class : "widget-asynclistview-nodata "
-                    }
+                    } style={{height: `${props.fixedHeight}`}}
                 >
                     {props.emptyText.value}
                 </div>
@@ -70,7 +69,7 @@ const AsyncListView = (props: AsyncListViewContainerProps): JSX.Element => {
         props.spinnerSize.status === ValueStatus.Available
     ) {
         refreshDatasource();
-        return <MendixSpinner color={props.spinnerColor.value} size={props.spinnerSize.value} />;
+        return <div style={{height: `${props.fixedHeight}`}}><MendixSpinner color={props.spinnerColor.value} size={props.spinnerSize.value} /></div>;
     } else {
         refreshDatasource();
         return <React.Fragment />;

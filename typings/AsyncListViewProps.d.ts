@@ -15,6 +15,7 @@ export interface AsyncListViewContainerProps {
     useMxListViewStyling: boolean;
     content: ListWidgetValue;
     emptyText: DynamicValue<string>;
+    fixedHeight: string;
     refreshBool: EditableValue<boolean>;
     refreshAction?: ActionValue;
     useSpinner: boolean;
@@ -29,6 +30,7 @@ export interface AsyncListViewPreviewProps {
     useMxListViewStyling: boolean;
     content: { widgetCount: number; renderer: ComponentType };
     emptyText: string;
+    fixedHeight: string;
     refreshBool: string;
     refreshAction: {} | null;
     useSpinner: boolean;
