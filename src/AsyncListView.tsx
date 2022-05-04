@@ -37,7 +37,7 @@ const AsyncListView = (props: AsyncListViewContainerProps): JSX.Element => {
                     >
                         <ul>
                             {props.data.items.map(mxObj => {
-                                return <li className="widget-asynclistview-item">{props.content(mxObj)}</li>;
+                                return <li className="widget-asynclistview-item">{props.content.get(mxObj)}</li>;
                             })}
                         </ul>
                     </div>
@@ -47,7 +47,7 @@ const AsyncListView = (props: AsyncListViewContainerProps): JSX.Element => {
                 return (
                     <div className={props.class ? "widget-asynclistview " + props.class : "widget-asynclistview "} style={{height: `${props.fixedHeight}`}}>
                         {props.data.items.map(mxObj => {
-                            return <div className="widget-asynclistview-item">{props.content(mxObj)}</div>;
+                            return <div className="widget-asynclistview-item">{props.content.get(mxObj)}</div>;
                         })}
                     </div>
                 );

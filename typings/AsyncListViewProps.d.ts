@@ -24,11 +24,13 @@ export interface AsyncListViewContainerProps {
 }
 
 export interface AsyncListViewPreviewProps {
-    class: string;
+    className: string;
     style: string;
-    data: {} | null;
+    styleObject?: CSSProperties;
+    readOnly: boolean;
+    data: {} | { type: string } | null;
     useMxListViewStyling: boolean;
-    content: { widgetCount: number; renderer: ComponentType };
+    content: { widgetCount: number; renderer: ComponentType<{ caption?: string }> };
     emptyText: string;
     fixedHeight: string;
     refreshBool: string;
